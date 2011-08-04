@@ -1,0 +1,59 @@
+#+Title: Org-mode Testing
+#+Babel: results silent
+
+The following instructions describe how to get started using the
+Org-mode test framework.
+
+1) Install the jump.el testing dependency which is included as a git
+   submodule in the org-mode repository.  To do so run the following
+   git submodule commands from inside the base of the Org-mode
+   directory (or just execute the following code block).
+
+   #+begin_src sh
+     cd ..
+     git submodule init
+     git submodule update
+   #+end_src
+
+2) Load the [[file:org-test.el][org-test.el]] file
+   #+begin_src emacs-lisp
+     (load-file "org-test.el")
+   #+end_src
+
+3) The =org-test-jump= command is now bound to =M-C-j= in all
+   emacs-lisp files.  Call this command from any file in the =lisp/=
+   directory of the org-mode repository to jump to the related test
+   file in the =testing/= directory.  Call this functions with a
+   prefix argument, and the corresponding test file will be stubbed
+   out if it doesn't already exist.
+
+4) Ingest the library-of-babel.org file since some tests require this.
+   #+begin_src emacs-lisp
+     (org-babel-lob-ingest "../contrib/babel/library-of-babel.org")
+   #+end_src
+
+5) [[info:ert#Top][Review the ERT documentation]] 
+
+6) A number of org-mode-specific functions and macros are provided in
+   =org-test.el= see the [[file:org-test.el::%3B%3B%3B%20Functions%20for%20writing%20tests][;;; Functions for Writing Tests]] subsection of
+   that file.  Some of these functions make use of example org-mode
+   files located in the [[file:examples][examples/]] directory.
+
+7) Functions for loading and running the Org-mode tests are provided
+   in the [[file:org-test.el::%3B%3B%3B%20Load%20and%20Run%20tests][;;; Load and Run Tests]] subsection, the most important of
+   which are
+   - =org-test-load= which loads the entire Org-mode test suite
+   - =org-test-current-defun= which runs all tests for the current
+     function around point (should be called from inside of an
+     Org-mode elisp file)
+   - =org-test-run-all-tests= which runs the entire Org-mode test suite
+   - also note that the =ert= command can also be used to run tests
+
+8) Load and run all tests
+   #+begin_src emacs-lisp 
+     (load-file "org-test.el")
+     (org-babel-lob-ingest "../contrib/babel/library-of-babel.org")
+     (org-test-load)
+     (org-test-run-all-tests)
+   #+end_src
+

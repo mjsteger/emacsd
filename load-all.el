@@ -1,0 +1,6 @@
+(load-file "~/.emacs.d/org-mode/load-org.el")
+(load-file "~/.emacs.d/languages/load-languages.el")
+(load-file "~/.emacs.d/tweaks/load-tweaks.el")
+(load-file "~/.emacs.d/vendors/load-vendors.el")
+(load-file "~/.emacs.d/flymake/load-flymake.el")
+(load-file "~/.emacs.d/vcs/load-vcs.el")
