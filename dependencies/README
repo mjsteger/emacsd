@@ -1,0 +1,2 @@
+put pylint_etc_wrapper in /usr/local/bin/
+install stk, so that you can get scheme :)
