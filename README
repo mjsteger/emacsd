@@ -5,4 +5,4 @@ ln -s /path/to/emacsd ~/.emacs.d
 open up your .emacs file("~/.emacs") in your favorite text editor(since you're setting up emacs right now, I'll forgive you if you use a different one temporarily) and put the following line in:
 (load-file "~/.emacs.d/load-all.el")
 
-Start up emacs(you'll need emacs-23 or later(i.e. not terminal emacs), and enjoy
+Start up emacs(you'll need emacs-23 or later(i.e. not terminal emacs), install everything in ~/.emacs.d/dependencies/, and enjoy 
