@@ -1,2 +1,1 @@
-;; org-persist.el - Aesir.local at <2011-08-04 Thu 12:17>
-(setq stored-clock-history '())
+;; org-persist.el - Aesir.local at <2011-08-17 Wed 22:08>

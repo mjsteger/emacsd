@@ -297,3 +297,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ; Make ibuffer aware of vc stuff
 (load-file "~/.emacs.d/tweaks/ibuffer-vc.el")
+
+(load-file "~/.emacs.d/tweaks/mode-compile.el")
+; Install mode-compile to give friendlier compiling support!
+(autoload 'mode-compile "mode-compile"
+   "Command to compile current buffer file based on the major mode" t)
+(global-set-key (kbd "C-c c") 'mode-compile)
+(autoload 'mode-compile-kill "mode-compile"
+ "Command to kill a compilation launched by `mode-compile'" t)
+(global-set-key (kbd "C-c k") 'mode-compile-kill)
