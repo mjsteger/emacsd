@@ -1,0 +1,7 @@
+* Twilio
+** Built an AMI ezpz
+** Set up hadoop/flume/pig/hive/zookeeper setup for log aggregation
+*** Would automatically set up network based on inter-communications through msgbus
+** Wrote a bunch of python scripts for mainentence, such as adding ldap users
+** Automated a ton of work, such as the local build process, and refactored building the AMI
+

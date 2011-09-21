@@ -391,7 +391,7 @@ replace any running timer."
 		  (run-with-timer
 		   secs nil `(lambda ()
 			       (setq org-timer-current-timer nil)
-			       (org-notify ,(format "%s: testerino" hl) t)
+			       (org-notify ,(format "%s: Time's up!" hl) t)
 			       (start-process "tea-time-play-notification" nil "afplay" "/Users/michaelsteger/Music/misc/alarm-clock-1.mp3")
 			       (setq org-timer-timer-is-countdown nil)
 			       (org-timer-set-mode-line 'off)

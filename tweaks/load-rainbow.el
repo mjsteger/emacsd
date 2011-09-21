@@ -7,3 +7,4 @@
  ;; Turn on global rainbow-delimiters mode, which colors (),{},[] to
  ;; show matching/deepness
 (global-rainbow-mode)
+

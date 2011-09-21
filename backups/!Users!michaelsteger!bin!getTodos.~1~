@@ -1,0 +1,15 @@
+#!/bin/bash
+
+testConnectivity=`ping -c 1 google.com`
+if [ $? == 0 ]; then
+# mv /Users/michaelsteger/bin/newFile /Users/michaelsteger/bin/oldFile
+# scp steggy@stegerwerks.org:~/todo /Users/michaelsteger/bin/newFile
+  IFSOLD=$IFS
+  IFS="
+"
+  for change in `diff -w /Users/michaelsteger/bin/oldFile /Users/michaelsteger/bin/newFile | egrep ">" |  cut -d ">" -f 2`; do
+      #echo "* TODO $change" >> /Users/michaelsteger/org/refile.org
+      #echo "SCHEDULED: <`date +%Y-%m-%d` `date | awk '{print $1}'`>" >> /Users/michaelsteger/org/refile.org
+      echo $change
+  done
+fi

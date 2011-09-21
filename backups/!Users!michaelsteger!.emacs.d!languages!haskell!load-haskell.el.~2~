@@ -1,0 +1,5 @@
+(load "~/.emacs.d/languages/haskell/haskell-mode-2.8.0/haskell-site-file")
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+;(add-to-list 'load-path "~/.emacs.d/languages/haskell/haskell-mode-2.8.0/inf-haskell.el")
+;(require 'inf-haskell)

@@ -61,7 +61,6 @@
 (ido-mode 1)
 
 (autoload 'autopair-global-mode "autopair" nil t)
-(autopair-global-mode)
 (add-hook 'lisp-mode-hook
           #'(lambda () (setq autopair-dont-activate t)))
 
@@ -160,7 +159,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
-(linum-mode 1)
 
 
 ;; Make ido complete everywhere
@@ -181,7 +179,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 
 ; Make emacs prefer to split horizantally
-(setq split-width-threshold 9999)
+(setq split-width-threshold 999)
 
 (auto-fill-mode)
 
@@ -306,3 +304,190 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (autoload 'mode-compile-kill "mode-compile"
  "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key (kbd "C-c k") 'mode-compile-kill)
+
+(global-set-key (kbd "C-M-w") 'backward-kill-sexp)
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'color-theme)
+(require 'color-theme-tomorrow)
+; (color-theme-tomorrow-night-eighties)
+(load-file "~/.emacs.d/sr-speedbar.el")
+(global-set-key (kbd "C-c g") 'sr-speedbar-toggle)
+
+
+;; use setq-default to set it for /all/ modes
+(setq-default mode-line-format
+  (list
+    ;; the buffer name; the file name as a tool tip
+    '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+        'help-echo (buffer-file-name)))
+
+    ;; line and column
+    "(" ;; '%02' to set to 2 chars at least; prevents flickering
+      (propertize "%02l" 'face 'font-lock-type-face) ","
+      (propertize "%02c" 'face 'font-lock-type-face)
+    ") "
+
+    ;; relative position, size of file
+    "["
+    (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+    "/"
+    (propertize "%I" 'face 'font-lock-constant-face) ;; size
+    "] "
+
+    ;; the current major mode for the buffer.
+    "["
+
+    '(:eval (propertize "%m" 'face 'font-lock-string-face
+              'help-echo buffer-file-coding-system))
+    "] "
+
+
+    "[" ;; insert vs overwrite mode, input-method in a tooltip
+    '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+              'face 'font-lock-preprocessor-face
+              'help-echo (concat "Buffer is in "
+                           (if overwrite-mode "overwrite" "insert") " mode")))
+
+    ;; was this buffer modified since the last save?
+    '(:eval (when (buffer-modified-p)
+              (concat ","  (propertize "Mod"
+                             'face 'font-lock-warning-face
+                             'help-echo "Buffer has been modified"))))
+
+    ;; is this buffer read-only?
+    '(:eval (when buffer-read-only
+              (concat ","  (propertize "RO"
+                             'face 'font-lock-type-face
+                             'help-echo "Buffer is read-only"))))
+    "] "
+
+    ;; add the time, with the date and the emacs uptime in the tooltip
+    '(:eval (propertize (format-time-string "%H:%M")
+              'help-echo
+              (concat (format-time-string "%c; ")
+                      (emacs-uptime "Uptime:%hh"))))
+    " --"
+    ;; i don't want to see minor-modes; but if you want, uncomment this:
+    ;; minor-mode-alist  ;; list of minor modes
+    "%-" ;; fill with '-'
+    ))
+
+(autopair-on)
+
+
+;Save the place you were in a buffer, when you switch out/back in
+(setq save-place-file "~/.emacs.d/saveplace") ;; keep my ~/ clean
+(setq-default save-place t)                   ;; activate it for all buffers
+(require 'saveplace)                          ;; get the package
+
+(global-unset-key (kbd "<left>") )
+(global-unset-key (kbd "<right>") )
+(global-unset-key (kbd "<up>") )
+(global-unset-key (kbd "<down>") )
+(require 'edit-server)
+(edit-server-start)
+(setq edit-server-new-frame nil)
+(setq ibuffer-saved-filter-groups
+      '(("home"
+	 ("elisp" (or (filename . ".emacs.d")
+                      (mode . emacs-lisp-mode)))
+	 ("Org" (or (mode . org-mode)
+		    (filename . "OrgMode")))
+         ("code" (mode . python-mode))
+	 ("Web Dev" (or (mode . html-mode)
+			(mode . css-mode)))
+	 ("ERC" (mode . erc-mode))
+	 ("Help" (or (name . "\*Help\*")
+		     (name . "\*Apropos\*")
+		     (name . "\*info\*"))))))
+(add-hook 'ibuffer-mode-hook
+	  '(lambda ()
+	     (ibuffer-switch-to-saved-filter-groups "home")))
+
+(setq ibuffer-expert t)
+(setq ibuffer-auto-mode t)
+(add-to-list 'load-path "~/.emacs.d/tweaks/bookmark+/")
+(require 'bookmark+)
+(require 'iedit)
+(global-set-key (kbd "M-'") 'iedit-mode)
+(global-set-key (kbd "C-x C-k") 'zap-to-char)
+(setq emacs-directory "~/.emacs.d/")
+(add-to-list 'load-path "~/.emacs.d/tweaks/backups-mode/")
+(require 'backups-mode)
+(load-file "~/.emacs.d/tweaks/load-rainbow.el")
+(require 'keywiz)
+(global-set-key (kbd "M-l") 'subword-mark)
+(add-to-list 'load-path "~/.emacs.d/tweaks/emacs-color-theme-solarized/")
+(require 'solarized-dark-theme)
+
+(defadvice bookmark-write-file
+  (after local-directory-bookmarks-to-zsh-advice activate)
+  (local-directory-bookmarks-to-zsh))
+(defun local-directory-bookmarks-to-zsh ()
+  (interactive)
+  (when (and (require 'tramp nil t)
+             (require 'bookmark nil t))
+    (set-buffer (find-file-noselect "~/.zsh.bmk" t t))
+    (delete-region (point-min) (point-max))
+    (insert "# -*- mode:sh -*-\n")
+    (let (collect-names)
+      (mapc (lambda (item)
+              (let ((name (replace-regexp-in-string "-" "_" (car item)))
+                    (file (cdr (assoc 'filename
+                                      (if (cddr item) item (cadr item))))))
+                (when (and (not (tramp-tramp-file-p file))
+                           (file-directory-p file))
+                  (setq collect-names (cons (concat "~" name) collect-names))
+                  (insert (format "%s=\"%s\"\n" name (expand-file-name file) name)))))
+            bookmark-alist)
+      (insert ": " (mapconcat 'identity collect-names " ") "\n"))
+    (let ((backup-inhibited t)) (save-buffer))
+    (kill-buffer (current-buffer))))
+
+;; revert buffers automatically when underlying files are changed externally
+(global-auto-revert-mode t)
+
+;; savehist: save some history
+(setq savehist-additional-variables    ;; also save...
+      '(search ring regexp-search-ring)    ;; ... my search entries
+      savehist-autosave-interval 60        ;; save every minute (default: 5 min)
+      savehist-file (concat "~/.emacs.d" "/savehist"))   ;; keep my home clean
+(savehist-mode t)                      ;; do customization before activation
+
+
+;; ;; time-stamps
+;; ;; when there's "Time-stamp: <>" in the first 10 lines of the file
+;; (setq
+;;  time-stamp-active t        ; do enable time-stamps
+;;  time-stamp-line-limit 10   ; check first 10 buffer lines for Time-stamp: <>
+;;  time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)") ; date format
+;; (add-hook 'write-file-hooks 'time-stamp) ; update when saving
+
+
+;; ;; flyspell-mode
+;; (setq ispell-program-name "aspell" ; use aspell instead of ispell
+;;       ispell-extra-args '("--sug-mode=ultra"))
+;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+;; (add-hook 'message-mode-hook 'turn-on-flyspell)
+;; (add-hook 'text-mode-hook 'turn-on-flyspell)
+;; (setq reb-re-syntax 'string)
+
+(require 'paredit)
+
+
+(autopair-global-mode)
+
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+              (push '(?` . ?')
+                    (getf autopair-extra-pairs :comment))
+              (push '(?` . ?')
+                    (getf autopair-extra-pairs :string))))
+
+(add-hook 'haskell-mode
+          '(lambda ()
+              (push '(?` . ?')
+                    (getf autopair-extra-pairs :comment))
+              (push '(?` . ?')
+                    (getf autopair-extra-pairs :string))))
+

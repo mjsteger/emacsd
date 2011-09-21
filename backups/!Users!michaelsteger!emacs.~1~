@@ -1,0 +1,75 @@
+(load-file "~/.emacs.d/load-all.el")
+
+(global-unset-key (kbd "C-x C-c"))
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ac-delay 0.05)
+ '(ac-quick-help-delay 2.0)
+ '(ac-show-menu-immediately-on-auto-complete nil)
+ '(bmkp-auto-light-when-jump nil)
+ '(bmkp-auto-light-when-set (quote any-bookmark))
+ '(dvc-tips-enabled nil)
+ '(ecb-options-version "2.40")
+ '(erc-autojoin-channels-alist (quote (("irc.twilio.comy" "#watercooler") ("freenode.net" "#emacs"))))
+ '(erc-modules (quote (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit)))
+ '(erc-nick "steggy")
+ '(erc-page-function nil)
+ '(erc-page-mode t)
+ '(erc-port 6697)
+ '(erc-server "irc.twilio.com")
+ '(flymake-extension-auto-show t)
+ '(flymake-extension-use-showtip t)
+ '(flymake-gui-warnings-enabled t)
+ '(flymake-no-changes-timeout 0.5)
+ '(grep-highlight-matches t)
+ '(gud-gdb-command-name "gdb --annotate=1")
+ '(ido-auto-merge-delay-time 0.3)
+ '(ido-create-new-buffer (quote never))
+ '(ido-enable-flex-matching nil)
+ '(ido-enable-regexp t)
+ '(ido-everywhere t)
+ '(ido-separator nil)
+ '(inhibit-startup-buffer-menu t)
+ '(inhibit-startup-screen t)
+ '(initial-buffer-choice nil)
+ '(kpm-list-highlight-most-recent 3)
+ '(large-file-warning-threshold nil)
+ '(org-agenda-skip-scheduled-if-done t)
+ '(org-completion-use-ido t)
+ '(ropemacs-confirm-saving nil)
+ '(safe-local-variable-values (quote ((eval outline-minor-mode 1)))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(flymake-errline ((((class color) (background dark)) (:background "DarkBlue" :foreground "red"))))
+ '(flymake-warnline ((((class color) (background dark)) (:background "DarkBlue" :foreground "Yellow"))))
+ '(visible-mark-non-trailing-face0 ((t (:foreground "red" :underline t))) t))
+
+(server-start)
+
+(defun close-or-kill-emacs (&optional arg)
+  (interactive "P")
+  (if (> (length (frame-list)) 1)
+      (delete-frame)
+    (if (and arg (yes-or-no-p "Are you sure you wish to exit? "))
+        (save-buffers-kill-terminal)
+      (ns-hide-emacs 1))))
+
+(global-set-key (kbd "C-x C-c") 'close-or-kill-emacs)
+(put 'dired-find-alternate-file 'disabled nil)
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))

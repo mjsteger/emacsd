@@ -1,0 +1,11 @@
+* Introduced bugs after testing initially, due to changing code
+** Need to implement TDD
+*** Suggest having emacs way to run tests which are named according to some convention
+*** Suggest having it possible to be set as an after-save hook
+** Changing base operators, such as *, caused bugs which were hard to detect and reason about
+*** Avoid changing __add__, __mul__, etc in the future 
+*** Instead, implement addPair, mulPair, etc. Easier to think about/keep seperate
+* Architecture was insufficient
+** Start with solved problem, make sure you return correct state. Then, reason about a problem 1 step away, etc.
+** Use Hilfinger style "code complete solution, assuming these magic functions exist"
+* 

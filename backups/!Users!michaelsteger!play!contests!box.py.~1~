@@ -1,0 +1,179 @@
+import sys
+import copy
+import math
+import heapq
+
+
+
+class Queue:
+    "A container with a first-in-first-out (FIFO) queuing policy."
+    def __init__(self):
+        self.list = []
+
+    def push(self,item):
+        "Enqueue the 'item' into the queue"
+        self.list.insert(0,item)
+
+    def pop(self):
+        """
+          Dequeue the earliest enqueued item still in the queue. This
+          operation removes the item from the queue.
+        """
+        return self.list.pop()
+
+    def isEmpty(self):
+        "Returns true if the queue is empty"
+        return len(self.list) == 0
+
+class PriorityQueue:
+    """
+      Implements a priority queue data structure. Each inserted item
+      has a priority associated with it and the client is usually interested
+      in quick retrieval of the lowest-priority item in the queue. This
+      data structure allows O(1) access to the lowest-priority item.
+
+      Note that this PriorityQueue does not allow you to change the priority
+      of an item.  However, you may insert the same item multiple times with
+      different priorities.
+    """
+    def  __init__(self):
+        self.heap = []
+
+    def push(self, item, priority):
+        pair = (priority,item)
+        heapq.heappush(self.heap,pair)
+
+    def pop(self):
+        (priority,item) = heapq.heappop(self.heap)
+        return item
+
+    def isEmpty(self):
+        return len(self.heap) == 0
+
+class searchFunction:
+    def __init__(self, fringeType):
+        self.fringeType = fringeType
+
+    def search(self, problem):
+        fringe = self.fringeType
+        closed_set = set(problem.getStartState())
+        [fringe.push([(state_location, direction_here, stepCost),
+            stepCost, [direction_here]])
+                for state_location, direction_here, stepCost in
+                    problem.getSuccessors(problem.getStartState())]
+        while not fringe.isEmpty():
+            state_space, costToHere, directions_here = fringe.pop()
+            state_location, direction_here, stepCost = state_space
+            if state_location not in closed_set:
+                closed_set.add(state_location)
+                if problem.isGoalState(state_location):
+                    return directions_here
+                [fringe.push(
+                    [(state_location, direction_here, thisCost + stepCost),
+                      thisCost + stepCost, directions_here + [direction_here]])
+                          for state_location, direction_here, thisCost in
+                              problem.getSuccessors(state_location)]
+
+    def carSearch(self, problem):
+        fringe = Queue()
+
+
+if len(sys.argv) > 1:
+    input = open(sys.argv[1]).readlines()
+else:
+    input = sys.stdin.readlines()
+
+DirectionToVector = {
+    "down": (0, 1),
+    "up" : (0, -1),
+    "right": (1, 0),
+    "left": (-1, 0)
+    }
+
+class CarProblem():
+    def __init__(self):
+        pass
+
+    def isGoalState(self, state):
+        return not state.isBlocked("S", Pair((6,3)))
+
+    def getSuccessors(self, state):
+        for car in state.cars.values():
+            orientationVector = Pair((1,0)) if car.orientation
+
+
+class Pair():
+    def __init__(self, xyTuple):
+        self.x, self.y = xyTuple
+
+    def __sub__(self, other):
+        return (self.x - other.x, self.y - other.y)
+
+    def __add__(self, other):
+        return (self.x + other.x, self.y + other.y)
+
+    """ return all the points between two pairs. So (1,0) and (5,0) would return
+    [(2,0), (3,0), (4,0)]. Note we can assume that only X or Y will be greater between
+    the pairs, as cars can move only vertically or horizantally"""
+    def PointsBetweenPairs(self, other):
+        if not self.x == other.x:
+            points = [Pair((i, j)) for i in range(min(self.x, other.x) +1, max(self.x, other.x)) for j in [ self.y * abs(self.y - other.y)]]
+        else:
+            points = [Pair((i, j)) for j in [self.x * abs(self.y - other.y)] for i in range(min(self.x, other.x) +1, max(self.x, other.x))]
+        return points
+
+    def repr(self):
+        return self.x, self.y
+
+    def __eq__(self, other):
+        if type(other) == type([]):
+            for pair in other:
+                if pair == self:
+                    return True
+            return False
+        else:
+            return self.x == other.x and self.y == other.y
+
+class CarState():
+    def __init__(self):
+        self.cars = {}
+
+    def addCar(self, aCar):
+        self.cars[aCar.name] = aCar
+
+    def isBlocked(self, carName, endPosition):
+        pointsToEnd = self.cars[carName].position.PointsBetweenPairs(endPosition)
+        occupiedSquares = [car.occupiedSpaces for car in self.cars.values() if not car.name == carName]
+        for point in pointsToEnd:
+            if point in occupiedSquares:
+                return False
+        return True
+
+    def copy(self):
+        newState = CarState()
+        [newState.addCar(car) for car in self.cars.values()]
+        return newState
+
+class singleCar():
+    def __init__(self, name, length, position, orientation):
+        self.name = name
+        self.length = length
+        self.position = position
+        self.orientation = orientation
+        self.directionVector = DirectionToVector[orientation]
+        self.occupiedSpaces = []
+        for i in range(self.length):
+            directionX, directionY = self.directionVector
+            thisPair = Pair((directionX * i, directionY * i))
+            contiguousElement = Pair((self.position + thisPair))
+            self.occupiedSpaces.append(contiguousElement)
+
+
+startState = CarState()
+for line in input:
+    if len(line) == 1: continue
+    name, length, position, orientation = line.split(" ")
+    positionx, positiony = [int(element) for element in position.split(",")]
+    thisCar = singleCar(name, int(length), Pair((positionx, positiony)), orientation.strip())
+    startState.addCar(thisCar)
+

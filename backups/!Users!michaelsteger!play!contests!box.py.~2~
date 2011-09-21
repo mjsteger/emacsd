@@ -1,0 +1,180 @@
+import sys
+import copy
+import math
+import heapq
+
+
+
+class Pair():
+    def __init__(self, xyTuple):
+        self.x, self.y = xyTuple
+
+    def __sub__(self, other):
+        return (self.x - other.x, self.y - other.y)
+
+    def __add__(self, other):
+        return (self.x + other.x, self.y + other.y)
+
+    def __mul__(self, other):
+        if type(other) == type(1):
+            return Pair((self.x * other, self.y * other))
+
+    """ return all the points between two pairs. So (1,0) and (5,0) would return
+    [(2,0), (3,0), (4,0)]. Note we can assume that only X or Y will be greater between
+    the pairs, as cars can move only vertically or horizantally"""
+    def PointsBetweenPairs(self, other):
+        if not self.x == other.x:
+            points = [Pair((i, j)) for i in range(min(self.x, other.x) +1, max(self.x, other.x)) for j in [ self.y * abs(self.y - other.y)]]
+        else:
+            points = [Pair((i, j)) for j in [self.x * abs(self.y - other.y)] for i in range(min(self.x, other.x) +1, max(self.x, other.x))]
+        return points
+
+    def repr(self):
+        return self.x, self.y
+
+    def __eq__(self, other):
+        if type(other) == type([]):
+            for pair in other:
+                if pair == self:
+                    return True
+            return False
+        else:
+            return self.x == other.x and self.y == other.y
+
+class Queue:
+    "A container with a first-in-first-out (FIFO) queuing policy."
+    def __init__(self):
+        self.list = []
+
+    def push(self,item):
+        "Enqueue the 'item' into the queue"
+        self.list.insert(0,item)
+
+    def pop(self):
+        """
+          Dequeue the earliest enqueued item still in the queue. This
+          operation removes the item from the queue.
+        """
+        return self.list.pop()
+
+    def isEmpty(self):
+        "Returns true if the queue is empty"
+        return len(self.list) == 0
+
+class PriorityQueue:
+    """
+      Implements a priority queue data structure. Each inserted item
+      has a priority associated with it and the client is usually interested
+      in quick retrieval of the lowest-priority item in the queue. This
+      data structure allows O(1) access to the lowest-priority item.
+
+      Note that this PriorityQueue does not allow you to change the priority
+      of an item.  However, you may insert the same item multiple times with
+      different priorities.
+    """
+    def  __init__(self):
+        self.heap = []
+
+    def push(self, item, priority):
+        pair = (priority,item)
+        heapq.heappush(self.heap,pair)
+
+    def pop(self):
+        (priority,item) = heapq.heappop(self.heap)
+        return item
+
+    def isEmpty(self):
+        return len(self.heap) == 0
+
+class CarSearch:
+    def __init__(self, fringe):
+        self.fringe = fringe
+
+    def search(self, problem):
+        fringe = self.fringe
+#        closed_set = set(problem.getStartState)
+        [fringe.push(car)
+            for car in problem.getSuccessors(problem.getStartState())]
+        while not fringe.isEmpty():
+            thisCar = fringe.pop()
+            #if thisCar not in closed_set:
+            if problem.isGoalState(thisCar):
+                return thisCar.getSteps()
+            [fringe.push(car) for car in problem.getSuccessors(thisCar)]
+
+if len(sys.argv) > 1:
+    input = open(sys.argv[1]).readlines()
+else:
+    input = sys.stdin.readlines()
+
+DirectionToVector = {"down": Pair((0, 1)), "up" : Pair((0, -1)),
+                     "right": Pair((1, 0)),"left": Pair((-1, 0)) }
+
+class CarProblem():
+    def __init__(self, startState):
+        self.startState = startState
+
+    def getStartState(self):
+        return self.startState
+
+    def isGoalState(self, state):
+        return not state.isBlocked("S", Pair((6,3)))
+
+    def getSuccessors(self, state):
+        for car in state.cars.values():
+            orientationVector = Pair([abs(point) for point in DirectionToVector.get(car.orientation)])
+            axis = "x" if orientationVector.x > orientationVector.y else "y"
+            if axis == "x":
+                for i in range(-(car.position.x), 6 - car.position.x):
+                    newXY = orientationVector * i + car.position
+                    if not state.isBlocked(car.name, newXY):
+                        testcar = singleCar(car.name, car.length, newXY, car.orientation)
+                        if not testcar.occupiedSpaces
+
+class CarState():
+    def __init__(self, cars={}):
+        self.cars = cars
+        self.steps = []
+        legalPositions = [(i,j) for i in range(1,7) for j in range(1,7)]
+
+    def addCar(self, aCar):
+        self.cars[aCar.name] = aCar
+
+    def isBlocked(self, carName, endPosition):
+        pointsToEnd = self.cars[carName].position.PointsBetweenPairs(endPosition)
+        occupiedSquares = [car.occupiedSpaces for car in self.cars.values() if not car.name == carName]
+        for point in pointsToEnd:
+            if point in occupiedSquares:
+                return False
+        return True
+
+    def copy(self):
+        return CarState(dict([(car.name, car) for car in self.cars.values()]))
+
+    def getSteps():
+        return self.steps
+
+class singleCar():
+    def __init__(self, name, length, position, orientation):
+        self.name = name
+        self.length = length
+        self.position = position
+        self.orientation = orientation
+        self.directionVector = DirectionToVector[orientation]
+        self.occupiedSpaces = []
+        self.occupiedSpaces = [Pair((self.position +
+            Pair((self.directionVector.x *i, self.directionVector.y * i))))
+            for i in range(self.length)]
+
+startState = CarState()
+for line in input:
+    if len(line) == 1: continue
+    name, length, position, orientation = line.split(" ")
+    positionx, positiony = [int(element) for element in position.split(",")]
+    thisCar = singleCar(name, int(length), Pair((positionx, positiony)), orientation.strip())
+    startState.addCar(thisCar)
+
+queue = Queue()
+problem = CarProblem(startState)
+search = CarSearch(queue)
+search.search(problem)

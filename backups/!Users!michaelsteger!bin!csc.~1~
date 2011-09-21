@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PROJECT_TO_SUBMIT=$1
+USER=cs188-py
+HOST=torus.cs.berkeley.edu
+ssh-add ~/.ssh/id_rsa.cs188 > /dev/null
+hg commit -m "Comitting for class submission at `date`"
+hg push
+# It's assumed that the current directory is where you want things
+# to originate from, and that it is the same as on the server
+PROJECT_NAME=`basename $PWD`
+ssh $USER@$HOST "cd $PROJECT_NAME && hg pull"
+ssh $USER@$HOST "cd $PROJECT_NAME && yes yes | submit $PROJECT_TO_SUBMIT"

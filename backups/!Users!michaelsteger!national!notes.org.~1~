@@ -1,0 +1,25 @@
+* Emacs
+** C-x C-u Upcase region, C-x C-l Lowercase
+** C-x C-k e edit macro
+** M-w saves to kill ring with killing
+** C-x h highlight buffer
+** C-x z is repeat
+** C-M-w kills last sexp
+** C-x Backspace kill last sentencey
+** C-M-o split line
+** C-M-\ is indent-region
+** C-x C-+ makes text bigger, C-x C-- makes it smaller
+** C-M-SPC marks arg sexps forward
+** M-s h l highlights lines matching regexp, M-s h p does phrase
+** Should re-assign append-next-kill
+** M-h does mark-paragraph
+** C-x ; does comment-set-column
+** C-x q lets
+
+** C-x j j Jump to bookmark in same window, C-x 4 j j, other window
+** C-x p c a autofile bookmark
+** M-' enables iedit-mode
+** C-x r m to set the bookmark, if you changed it
+** C-x p f, C-x p b, cycle through bookmarks(set type with C-x p :)
+* Things to watch for
+** [[http://www.freebirdgames.com/to_the_moon/][To The Moon]]

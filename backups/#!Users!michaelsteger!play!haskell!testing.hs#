@@ -1,0 +1,7 @@
+foo = foldr (+) 0 [1..20]
+double x= x+x
+doubleSmall x = if x < 100
+                 then x * 2
+                 else x
+
+fizzBuzz xs = [ if x `mod` 15 == 0 then "FizzBuzz" else if x `mod` 3 == 0 then "Fizz" else "Buzz" | x <- xs, mod x 3 ==0 || mod x 5 == 0 ]

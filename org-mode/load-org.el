@@ -23,6 +23,7 @@
 			     "~/org/google.org"
 			     "~/org/work.org"
 			     "~/org/intern.twilio.org"
+			     "~/org/refile.org"
 			     ))
 
 
@@ -87,7 +88,7 @@
 
 (global-set-key (kbd "C-c g") 'org-timer-set-timer)
 (setq org-agenda-start-on-weekday nil)
-(setq org-timer-default-timer 25)
+(setq org-timer-default-timer 6)
 (setq orgPreviousWindow nil)
 (setq org-default-notes-file "~/org/notes.org")
 

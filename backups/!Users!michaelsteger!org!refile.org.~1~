@@ -1,0 +1,19 @@
+* TODO  Order checks
+SCHEDULED: <2011-08-30 Tue>
+* TODO  Ask for red twilio bag
+SCHEDULED: <2011-08-30 Tue>
+* DONE Freight and salvage coffeehouse investigate
+SCHEDULED: <2011-08-30 Tue> CLOSED: [2011-08-31 Wed 16:32]
+- State "DONE"       from "TODO"       [2011-08-31 Wed 16:32]
+* CANCELLED Cash jamies check                                     :CANCELLED:
+SCHEDULED: <2011-08-30 Tue> CLOSED: [2011-08-31 Wed 13:35]
+- State "CANCELLED"  from "TODO"       [2011-08-31 Wed 13:35]
+- State "TODO"       from "DONE"       [2011-08-31 Wed 13:35]
+- State "DONE"       from "TODO"       [2011-08-31 Wed 13:34]
+ Make it so this thing can properly split up tasks
+SCHEDULED: <2011-08-29 Mon>
+* DONE Show kitty mikey is the best
+SCHEDULED: <2011-08-30 Tue> CLOSED: [2011-08-30 Tue 11:49]
+- State "DONE"       from "TODO"       [2011-08-30 Tue 11:49]
+* TODO  4 sentence summary for libation bearers
+SCHEDULED: <2011-09-01 Thu>

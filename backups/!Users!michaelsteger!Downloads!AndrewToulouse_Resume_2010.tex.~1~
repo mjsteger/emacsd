@@ -1,0 +1,115 @@
+\documentclass[letterpaper,10pt]{resume}
+\usepackage[pdftex]{color}
+
+\def\bclr#1{\expandafter\gdef\csname#1\endcsname##1{{\color{#1}\textbf{##1}}}}
+\definecolor{green}{rgb}{0,0.5,0}
+
+\bclr{red}
+\bclr{blue}
+\bclr{green}
+
+\name{Andrew Toulouse}
+\address{
+    Berkeley, CA\next
+    1-415-TOU-LOUS
+}
+\email{\blue{job@atoulou.se}}
+
+\begin{document}
+    \section{Objective}
+        To develop mobile applications in a fast-paced environment among high quality engineers.
+        %This is done to make the vertical line thing.
+        \place{}\endplace
+    \endsection
+    \section{Experience}
+		\place{Zoosk, Inc., San Francisco}
+			\job{Engineer, Mobile Team}{February 2010}{Present}
+			\begin{items}
+				\item One of two employees working on Zoosk iPhone app
+				\item Have fixed multiple deployment-blocking bugs, and numerous critical and major bugs
+				\item Optimized, heavily refactored, added features to, and debugged Zooskbox UI
+				\item Wrote unit tests for and added documentation to utility functions
+				\item Wrote Python support scripts for plural-forms-aware NSLocalizedString replacement
+				\item Added support for several Zoosk APIs to iPhone client
+				\item Implemented iPhone client's support for push notifications
+				\item Miscellaneous other code changes
+			\end{items}
+		\endplace
+        \place{Trumpet Technologies, Portola Valley}
+            \job{Engineer}{October 2009}{January 2010}
+            \begin{items}
+                \item Founding member of Trumpet Technologies
+                \item Implemented Facebook-related functionality in Java with JSPs, Servlet API, and Facebook API.
+            \end{items}
+        \endplace
+        \place{Facebook Inc., Palo Alto}
+            \job{Software Engineering Intern}{June 2009}{September 2009}
+            \begin{items}
+                \item Designed and implemented a framework for taking and creating surveys in PHP and MySQL+internal Facebook DB API
+                \item Created abstractions for multiple data store types and arbitrary question type plugins
+            \end{items}
+        \endplace
+        \place{EECS Department, UC Berkeley}
+            \job{Various instructional roles}{Fall 2007}{Fall 2008}
+            \begin{items}
+                \item CS61C Machine Structures Lab Assistant, Reader (Fall 2007-Spring 2008)
+                \item CS3L Introduction to Symbolic Programming TA (Fall 2008)
+                \item Self-Paced Center Tutor and Reader (Fall 2007-Spring 2008)
+            \end{items}
+        \endplace
+        \place{Computer Science Undergraduate Association}
+            \job{President}{December 2008}{May 2009}
+        \endplace
+    \endsection
+    \section{Skills}
+        \begin{items}
+            \item\textbf{Languages:} Objective-C, Python, PHP/MySQL, Java, C, HTML/CSS, MIPS assembly, Verilog
+            \item\textbf{Operating Systems:} Arch/Debian/Ubuntu Linux, FreeBSD, OS X
+            \item\textbf{Source Control:} Git, Subversion, Mercurial, Bazaar
+            \item\textbf{Editors/IDEs:} Xcode, Eclipse, TextMate, Vim, Nano
+            \item\textbf{Miscellaneous:} Cocoa touch APIs, shell scripting, Servlets/Java Server Pages
+        \end{items}
+        \vspace{3mm}
+    \endsection
+    \section{Projects}
+        \textbf{RFID Roaming} \texttt{(Python, Bash Scripts)}
+            \begin{items}
+                \item Wrote software to identify nearby RFID cards and log in to the appropriate session on a NX server.
+            \end{items}
+        \textbf{YESH - Yahoo-Enabled SHell} \texttt{(Python)}
+            \begin{items}
+                \item Wrote a simple REPL that made calls to Yahoo APIs
+            \end{items}
+        \textbf{Searchino} \texttt{(PHP)}
+            \begin{items}
+                \item \textit{Overall 1st Place}, \textit{BOSS Category Winner}, Hack Day 2008
+                \item Wrote a search engine frontend with user ratings and feedback powered by Yahoo!'s BOSS API
+            \end{items}
+        \textbf{Various SearchMonkey Plugins,} \texttt{(XSLT, PHP)}
+            \begin{items}
+                \item \textit{SearchMonkey Category Winner}, Hack Day 2008
+                \item Wrote multiple site plugins for Yahoo!'s SearchMonkey API overnight while learning XSLT
+            \end{items}
+        \textbf{TowAR} \texttt{(C)}
+            \begin{items}
+                \item \textit{Winning entry}, Hackathon 2008
+                \item Used ARToolkit and OpenGL APIs to make an Augmented Reality Tower Defense game demo
+            \end{items}
+        \textbf{sprintf} \texttt{(MIPS Assembly)}
+            \begin{items}
+                \item Written in one day without use of assembler until debug stage; single bug (line transposition)
+            \end{items}
+        \textbf{CPU, Serial Interface, Framebuffer, and PS/2 controller} \texttt{(Verilog)}
+            \begin{items}
+                \item Tested on a Xilinx ML505 board
+            \end{items}
+    \endsection
+    \section{Education}
+        \place{University of California, Berkeley}
+        \job{Student}{August 2006}{May 2009}
+        \begin{items}
+            \item Undergraduate Electrical Engineering and Computer Science (EECS) Major, Senior
+        \end{items}
+        \endplace
+    \endsection
+\end{document}

@@ -1,0 +1,172 @@
+# rc -- zsh
+# vim:fdm=marker
+# useful links: {{{
+#  - http://gentoo-wiki.com/Talk:Screen
+#  - http://www.gentoo.org/doc/en/zsh.xml
+#  - http://aperiodic.net/phil/prompt/
+#  - http://www.cs.elte.hu/zsh-manual/zsh_15.html
+#  - http://www.cs.elte.hu/zsh-manual/zsh_16.html
+#  - http://grml.org/zsh/zsh-lovers.html
+#  - http://wiki.archlinux.org/index.php/Zsh
+#  - http://zshwiki.org/home/examples/compquickstart
+# }}}
+
+# Environment {{{
+umask 077                   # Deny group/world rwx by default (multiuser systems)
+export EDITOR=emacs
+export PAGER=less
+# }}}
+# Options {{{
+setopt extended_glob
+setopt prompt_subst         # Required for the prompt
+setopt share_history        # Share history between multiple instances of zsh
+setopt auto_list            # Show possible matches if completion can't figure out what to do
+setopt auto_resume          # Commands without arguments will first try to resume suspended programs of the same name
+setopt extended_history     # Put beginning and ending timestamps in the history file
+setopt hist_ignore_dups     # Sequential duplicate commands only get one history entry
+setopt hist_find_no_dups    # Don't show duplicate commands when searching the history
+setopt magic_equal_subst    # Do completion on <value> in foo=<value>
+setopt nonomatch            # Don't error if globbing fails; just leave the globbing chars in
+setopt auto_cd              # Skip `cd` when changing to a directory
+setopt no_beep              # "I refer to this informally as the OPEN_PLAN_OFFICE_NO_VIGILANTE_ATTACKS option."
+HISTFILE=~/.zhistory
+HISTSIZE=5000               # Maximum size of history list
+SAVEHIST=5000               # Save the last 3000 commands
+LISTMAX=0                   # Only ask if completion listing would scroll off screen
+REPORTTIME=60               # Give timing statistics for programs that take longer than a minute to run
+# }}}
+# compinit/tab-completion {{{
+zmodload zsh/complist
+autoload -U compinit && compinit
+zstyle ':completion:::::' completer _complete _approximate
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) )'
+zstyle ':completion:*:descriptions' format "- %d -"
+zstyle ':completion:*:corrections' format "- %d - (errors %e)"
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*' menu select
+zstyle ':completion:*' verbose yes
+#bindkey ' ' magic-space     # Do history expansion on space
+# menu-select settings {{{
+bindkey '^d' menu-select    # Use ^D for more useful tab completion
+bindkey -M menuselect '^o' accept-and-infer-next-history
+bindkey -M menuselect h backward-char
+bindkey -M menuselect j down-line-or-history
+bindkey -M menuselect k up-line-or-history
+bindkey -M menuselect l forward-char
+# }}} }}}
+# Bindings {{{
+bindkey '^_' undo           # Ctrl-/ usually inserts Ctrl-_
+bindkey '^r' history-incremental-search-backward
+# }}}
+# Aliases {{{
+# }}}
+# Prompt {{{
+# colors adapted from Phil!'s Zsh prompt
+autoload -U colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    eval PR_$color='%{$bold_color$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+    (( count = $count + 1 ))
+done
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    eval PR_BG_$color='%{$bold_color$bg[${(L)color}]%}'
+    (( count = $count + 1 ))
+done
+PR_NO_COLOR="%{$reset_color%}"
+PS1='%(!.$PR_BG_RED$PR_YELLOW%n$PR_NO_COLOR$PR_WHITE.$PR_GREEN%n$PR_WHITE)@$PR_CYAN%m$PR_NO_COLOR:$PR_MAGENTA%~$PR_NO_COLOR
+%(!.$PR_RED%#$PR_NO_COLOR.$PR_WHITE%#$PR_NO_COLOR) '
+RPS1='%(?..$PR_RED [%?]$PR_NO_COLOR)%(1j.$PR_CYAN [%j]$PR_NO_COLOR.)$PR_LIGHT_CYAN %T$PR_NO_COLOR'
+PS2='$PR_WHITE%#$PR_NO_COLOR($PR_LIGHT_GREEN%_$PR_NO_COLOR) '
+# }}}
+# Titlebars for GNU Screen and Xterm {{{
+function set_titlebar()
+{
+    # Set either xterm's titlebar or screen's hardstatus.
+    # Usage:    set_titlebar short-title descriptive-title
+    # eg.,      set_titlebar "user@host:~" "[~] vim"
+    case $TERM in
+        xterm*)
+            # set a descriptive title for xterms
+            print -nR $'\033]0;'$2$'\a'
+        ;;
+        screen*)
+            # set tab window title (%t)
+            print -nR $'\033k'$1$'\033'\\\
+            # and hardstatus of tab window (%h)
+            print -nR $'\033]0;'$2$'\a'
+        ;;
+        *)
+            # all other terminals -- don't do anything
+        ;;
+    esac
+}
+
+# Set variables {{{
+# use current user@host as the prefix of the current tab title
+TAB_TITLE_PREFIX='"${USER}@`print -P %m`:"'
+# when at the shell prompt, show a truncated version of the current path (with
+# standard ~ replacement) as the rest of the title.
+TAB_TITLE_PROMPT='`print -Pn "%~" | sed "s:\([~/][^/]*\)/.*/:\1...:"`'
+# when running a command, show the title of the command as the rest of the
+# title (truncate to drop the path to the command)
+TAB_TITLE_EXEC='`case $cmd[1]:t in ; "sudo") echo $cmd[2]:t;; *) echo $cmd[1]:t;; esac`'
+
+# use the current path (with standard ~ replacement) in square brackets as the
+# prefix of the tab window hardstatus.
+TAB_HARDSTATUS_PREFIX='`print -Pn "[%~] "`'
+# when at the shell prompt, use the shell name (truncated to remove the path to
+# the shell) as the rest of the title
+TAB_HARDSTATUS_PROMPT='$SHELL:t'
+# when running a command, show the command name and arguments as the rest of
+# the title
+TAB_HARDSTATUS_EXEC='$cmd'
+# }}}
+# }}}
+# preexec() and precmd() {{{
+# Called by zsh before executing a command:
+function preexec()
+{
+    local -a cmd; cmd=(${(z)1})        # the command string
+    eval "tab_title=$TAB_TITLE_PREFIX$TAB_TITLE_EXEC"
+    eval "tab_hardstatus=$TAB_HARDSTATUS_PREFIX$TAB_HARDSTATUS_EXEC"
+    set_titlebar $tab_title $tab_hardstatus
+}
+
+# Called by zsh before showing the prompt:
+function precmd()
+{
+    eval "tab_title=$TAB_TITLE_PREFIX$TAB_TITLE_PROMPT"
+    eval "tab_hardstatus=$TAB_HARDSTATUS_PREFIX$TAB_HARDSTATUS_PROMPT"
+    set_titlebar $tab_title $tab_hardstatus
+}
+# }}}
+# mmv {{{
+autoload -U zmv
+alias mmv='noglob zmv -W'
+# }}}
+
+#servercheck alias
+#alias sc='~/bin/servercheck'
+#alias gccc='~/bin/gccc'
+alias py='/usr/local/bin/bpython'
+
+alias mktags='cd $1 && `find . -name "*.[h|c]"` | xargs etags && cd -'
+
+
+
+# set term to 256 because pretty emacs is good emacs
+export TERM=xterm-256color
+export PYTHONPATH=/usr/lib/python2.6/site-packages/
+alias ll='ls -l'
+alias emacsclient='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n $@'
+alias ec='emacsclient'
+ssh-agent >/dev/null
+ssh-add 2> /dev/null
+alias hgpush="printf '%s%s' 'hg push ssh://hg@bitbucket.org/mjsteger/' $1"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function

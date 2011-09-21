@@ -1,0 +1,21 @@
+import sys
+
+
+class StringPrint:
+    def __init__(self):
+        self.dict = {0: "|", 1: "/", 2: "-", 3: "\\"}
+        self.counter = 0
+
+    def mutate(self):
+        sys.stdout.write("\r")
+        # TODO: GET THIS FIXED
+        sys.stdout.write(self.dict[self.counter])
+        sys.stdout.flush()
+        self.counter = (self.counter + 1) % 4
+
+if __name__ == "__main__":
+    thisThing = StringPrint()
+    while True:
+        thisThing.mutate()
+
+

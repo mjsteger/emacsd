@@ -1,0 +1,2 @@
+ssh-add ~/.ssh/id_rsa.cs188
+hg commit -m "Comitting for class submission at
