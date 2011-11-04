@@ -1,0 +1,227 @@
+* Tasks
+** DONE Fix LVM Snapshots
+SCHEDULED: <2011-07-18 Mon> CLOSED: [2011-07-18 Mon 22:29]
+- State "DONE"       from "STARTED"    [2011-07-18 Mon 22:29]
+- Note taken on [2011-07-18 Mon 15:44] \\
+  Clearly, we need to Fix up ebs-create
+- Note taken on [2011-07-18 Mon 15:32] \\
+  /usr/local/twilio/src/php/scripts/ec2/run-command.php needs to check
+  whether its getting an EC2 failure. Otherwise we silently fail on
+  ebs-create, which causes create-backup-ebs-partition to fail. Sad news
+- Note taken on [2011-07-18 Mon 14:14] \\
+  Things to note:
+  conf is stored in /etc/lvm/lvm.conf
+  We first make a backup with:
+
+  mkdir -p /backup/
+
+  Then we run /usr/local/sbin/create-backup-ebs-partition
+  Make sure to check /etc/fstab for /dev/sdz entry(/dev/sdz is the hardcoded value for the backup volume)y
+
+  We then run /usr/local/sbin/mysql-backup
+:LOGBOOK:
+CLOCK: [2011-07-18 Mon 16:42]--[2011-07-18 Mon 22:29] =>  5:47
+CLOCK: [2011-07-18 Mon 12:50]--[2011-07-18 Mon 14:15] =>  1:25
+:END:
+
+  [[file:~/org/work.org::*Finish%20building%20the%20AMI%20already][Finish building the AMI already]]
+** TODO
+
+  [[file:~/org/work.org::*Finish%20building%20the%20AMI%20already][Finish building the AMI already]]
+** DONE Fix up ami build script.
+CLOSED: [2011-07-19 Tue 22:06]
+- State "DONE"       from "TODO"       [2011-07-19 Tue 22:06]
+:LOGBOOK:
+:END:
+Fix up so that /etc/init.d/mysqld gets removed
+Fix up so that /usr/bin/docbook2x* gets removed
+SCHEDULED: <2011-07-19 Tue>
+** DONE [#A] Fix up the AMI scripts in a major way
+SCHEDULED: <2011-07-20 Wed> CLOSED: [2011-07-21 Thu 20:40]
+- State "DONE"       from "STARTED"    [2011-07-21 Thu 20:40]
+- Note taken on [2011-07-21 Thu 12:51]
+- Note taken on [2011-07-19 Tue 14:39] \\
+  /usr/bin/docbook2x* and /etc/init.d/mysqld need to die(or be ln -sf
+  or something)
+  cepstral has two different versions for swift. Something to consider
+  reviewing
+  ec2 is totally crazy- there are full scripts being made with here
+  documents. We should really consider making these independent files
+  in source control. The current system confusing and unintuitive.
+:LOGBOOK:
+
+CLOCK: [2011-07-19 Tue 15:19]--[2011-07-19 Tue 16:15] =>  0:56
+CLOCK: [2011-07-19 Tue 11:50]--[2011-07-19 Tue 14:36] =>  2:46
+:END:
+:PROPERTIES:
+:Effort: 3:00
+:END:
+*** DONE Ask waffles if theres a reason tomcat needs a homedir
+It doesn't
+SCHEDULED: <2011-07-21 Thu> CLOSED: [2011-07-21 Thu 13:03]
+- State "DONE"       from "TODO"       [2011-07-21 Thu 13:03]
+  [[file:~/org/work.org::*%5B#B%5D%20Set%20up%20the%20twilio.rb%20script%20in%20prod%20or%20whatever,%20ask%20Geoff][Set up the twilio.rb script in prod or whatever, ask Geoff]]
+** DONE [#C] Evaluate Puppet
+SCHEDULED: <2011-07-19 Tue> CLOSED: [2011-07-19 Tue 22:44]
+- State "DONE"       from "TODO"       [2011-07-19 Tue 22:44]
+- Note taken on [2011-07-19 Tue 16:52] \\
+  How to setup chef:
+
+  cd /tmp
+  wget http://production.cf.rubygems.org/rubygems/rubygems-1.7.2.tgz
+  tar zxf rubygems-1.7.2.tgz
+  cd rubygems-1.7.2
+  sudo ruby setup.rb --no-format-executable
+
+  sudo gem install chef
+
+
+
+
+  sudo chef-solo -c /etc/chef/solo.rb -j ~/chef.json -r http://s3.amazonaws.com/chef-solo/bootstrap-latest.tar.gz
+:LOGBOOK:
+CLOCK: [2011-07-19 Tue 16:15]--[2011-07-19 Tue 16:58] =>  0:43
+CLOCK: [2011-07-19 Tue 14:36]--[2011-07-19 Tue 15:19] =>  0:43
+:END:
+
+  [[file:~/org/work.org::*Fix%20twilio%20IRC%20to%20not%20have%20msteger%20user%20which%20/home/msteger%20is%20trying%20to%20get%20chowned%20for][Fix twilio IRC to not have msteger user which /home/msteger is trying to get chowned for]]
+** DONE [#B] Tutorial ami parts devops wiki
+SCHEDULED: <2011-07-20 Wed> CLOSED: [2011-07-21 Thu 11:13]
+- State "DONE"       from "TODO"       [2011-07-21 Thu 11:13]
+- Note taken on [2011-07-20 Wed 09:11] \\
+  Set up a universal "addUserIfNotExists", and replace all the grep "^*"
+  /etc/passwd calls. Also, write comments for all the functions in
+  functions
+** DONE [#A] Add chunder stuff to AMI
+SCHEDULED: <2011-07-20 Wed> CLOSED: [2011-07-21 Thu 20:40]
+- State "DONE"       from "STARTED"    [2011-07-21 Thu 20:40]
+:LOGBOOK:
+CLOCK: [2011-07-20 Wed 13:24]--[2011-07-20 Wed 19:24] =>  6:00
+CLOCK: [2011-07-20 Wed 10:12]--[2011-07-20 Wed 10:37] =>  0:25
+CLOCK: [2011-07-20 Wed 10:08]--[2011-07-20 Wed 10:09] =>  0:01
+:END:
+:PROPERTIES:
+:Effort: 5:00
+:END:
+
+  [[file:~/org/work.org::*Finish%20building%20the%20AMI%20already][Finish building the AMI already]]
+** DONE Fix Web Boxconfig issue
+SCHEDULED: <2011-07-20 Wed> CLOSED: [2011-07-20 Wed 13:19]
+- State "DONE"       from "STARTED"    [2011-07-20 Wed 13:19]
+:LOGBOOK:
+CLOCK: [2011-07-20 Wed 10:37]--[2011-07-20 Wed 13:19] =>  2:42
+:END:
+** DONE Get my stuff code reviewed
+SCHEDULED: <2011-07-22 Fri> CLOSED: [2011-07-22 Fri 20:05]
+- State "DONE"       from "TODO"       [2011-07-22 Fri 20:05]
+Things to go over:
+- [X] All the scripts/ changes
+- [X] Updates to the web tutorial, suggestions
+  Point out different repo
+  Introduction
+- [X] All the yaml files in ~/twilio
+
+  [[file:~/org/home.org::*Print%20out%20Jamie's%20resume][Print out Jamie's resume]]
+
+  [[file:~/.emacs.d/tweaks/load-tweaks.el::'(inhibit-startup-buffer-menu%20t)][file:~/.emacs.d/tweaks/load-tweaks.el::'(inhibit-startup-buffer-menu t)]]
+** DONE Change nagcmd
+SCHEDULED: <2011-07-25 Mon> CLOSED: [2011-07-25 Mon 11:28]
+- State "DONE"       from "TODO"       [2011-07-25 Mon 11:28]
+** DONE 20000 change
+SCHEDULED: <2011-07-25 Mon> CLOSED: [2011-07-25 Mon 11:29]
+- State "DONE"       from "TODO"       [2011-07-25 Mon 11:29]
+
+  [[file:~/org/devOps.twilio.org::*Change%20nagcmd][Change nagcmd]]
+** DONE Notes for upkeeping versions
+SCHEDULED: <2011-07-25 Mon> CLOSED: [2011-07-25 Mon 11:30]
+- State "DONE"       from "TODO"       [2011-07-25 Mon 11:30]
+
+  [[file:~/org/devOps.twilio.org::*20000%20change][20000 change]]
+** DONE Make sure flume-configure works with the new schema
+SCHEDULED: <2011-07-25 Mon> CLOSED: [2011-07-25 Mon 20:23]
+- State "DONE"       from "TODO"       [2011-07-25 Mon 20:23]
+** TODO Need to take care of that thing
+** DONE Fix up AMI
+SCHEDULED: <2011-07-25 Mon> CLOSED: [2011-07-25 Mon 20:23]
+- State "DONE"       from "STARTED"    [2011-07-25 Mon 20:23]
+:LOGBOOK:
+CLOCK: [2011-07-25 Mon 12:36]--[2011-07-25 Mon 20:23] =>  7:47
+:END:
+** DONE Check on AMI Build
+SCHEDULED: <2011-07-25 Mon> CLOSED: [2011-07-28 Thu 19:55]
+- State "DONE"       from "TODO"       [2011-07-28 Thu 19:55]
+ec2-50-16-124-194.compute-1.amazonaws.com
+ec2-184-72-192-163.compute-1.amazonaws.com
+** DONE VirtualEnv/2.7 python
+SCHEDULED: <2011-07-26 Tue> CLOSED: [2011-07-28 Thu 19:55]
+- State "DONE"       from "TODO"       [2011-07-28 Thu 19:55]
+
+  [[file:~/org/devOps.twilio.org::*Check%20on%20AMI%20Build][Check on AMI Build]]
+** DONE Build AMI with python fix
+SCHEDULED: <2011-07-28 Thu> CLOSED: [2011-07-28 Thu 13:44]
+- State "DONE"       from "STARTED"    [2011-07-28 Thu 13:44]
+- State "TODO"       from "DONE"       [2011-07-28 Thu 13:09]
+- State "DONE"       from "STARTED"    [2011-07-28 Thu 13:09]
+CLOCK: [2011-07-28 Thu 13:09]--[2011-07-28 Thu 13:44] =>  0:35
+:LOGBOOK:
+CLOCK: [2011-07-28 Thu 11:46]--[2011-07-28 Thu 13:09] =>  1:23
+:END:
+:PROPERTIES:
+:Effort: 3:00
+:END:
+** DONE Help adam set up the new boxconfig dev
+SCHEDULED: <2011-07-29 Fri> CLOSED: [2011-08-01 Mon 10:10]
+- State "DONE"       from "STARTED"    [2011-08-01 Mon 10:10]
+:PROPERTIES:
+:Effort: 3:00
+:END:
+
+  [[file:~/org/school.org::*%5B#B%5D%20Start/finish%20Proj%201][Start/finish Proj 1]]
+** DONE Fix Ami for gevent
+SCHEDULED: <2011-08-01 Mon> CLOSED: [2011-08-01 Mon 10:10]
+- State "DONE"       from "TODO"       [2011-08-01 Mon 10:10]
+** DONE Set up GitHubFI startup script
+SCHEDULED: <2011-08-02 Tue> CLOSED: [2011-08-02 Tue 16:36]
+- State "DONE"       from "STARTED"    [2011-08-02 Tue 16:36]
+:LOGBOOK:
+CLOCK: [2011-08-02 Tue 15:48]--[2011-08-02 Tue 16:36] =>  0:48
+:END:
+** DONE Seriously set up hanging out with sean stuff :/
+SCHEDULED: <2011-08-05 Fri> CLOSED: [2011-08-10 Wed 12:12]
+- State "DONE"       from "TODO"       [2011-08-10 Wed 12:12]
+** DONE [#A] Put AMI into dev, see about testing
+SCHEDULED: <2011-08-01 Mon> CLOSED: [2011-08-01 Mon 14:21]
+- State "DONE"       from "TODO"       [2011-08-01 Mon 14:21]
+
+  [[file:~/org/devOps.twilio.org::*%5B#A%5D%20Set%20up%20AMI%20automation][Set up AMI automation]]
+** DONE [#A] Add File to be found(.tar.gz, .tgz, etc) and file it is in to versions
+SCHEDULED: <2011-08-02 Tue> CLOSED: [2011-08-02 Tue 12:05]
+- State "DONE"       from "TODO"       [2011-08-02 Tue 12:05]
+** DONE [#A] Add /var/log/nginx to the AMI
+SCHEDULED: <2011-08-02 Tue> CLOSED: [2011-08-02 Tue 12:05]
+- State "DONE"       from "TODO"       [2011-08-02 Tue 12:05]
+
+  [[file:~/org/devOps.twilio.org::*%5B#A%5D%20Add%20File%20to%20be%20found(.tar.gz,%20.tgz,%20etc)%20and%20file%20it%20is%20in%20to%20versions][Add File to be found(.tar.gz, .tgz, etc) and file it is in to versions]]
+** TODO Cull Paul/Micah's accounts
+
+  [[file:~/twilio/thingsForRealm.org::*/usr/local/sbin/svn-realm-export][/usr/local/sbin/svn-realm-export]]
+** DONE Interview Facebook 28th?(unconfirmed)
+SCHEDULED: <2011-10-28 Fri> CLOSED: [2011-10-27 Thu 18:26]
+- State "DONE"       from "TODO"       [2011-10-27 Thu 18:26]
+
+  [[file:~/org/refile.org::*Goto%20188%20with%20jessica%20pan][Goto 188 with jessica pan]]
+** DONE Do Facebook Interview? unconfirmed
+SCHEDULED: <2011-10-28 Fri> CLOSED: [2011-10-27 Thu 18:26]
+- State "DONE"       from "TODO"       [2011-10-27 Thu 18:26]
+
+  [[file:~/org/school.org::*Set%20up%20phabricator%20for%20188%20proj%203][Set up phabricator for 188 proj 3]]
+** DONE Pandora Interview In Oakland
+SCHEDULED: <2011-10-17 Mon 15:00> DEADLINE: <2011-10-17 Mon 15:00> CLOSED: [2011-10-20 Thu 12:58]
+- State "DONE"       from "TODO"       [2011-10-20 Thu 12:58]
+** DONE Facebook Interview
+SCHEDULED: <2011-10-28 Fri> CLOSED: [2011-10-30 Sun 21:31]
+- State "DONE"       from "TODO"       [2011-10-30 Sun 21:31]
+
+  [[file:~/org/refile.org::*Order%20checks][Order checks]]
+** TODO Look into Visual Studio
+SCHEDULED: <2011-10-28 Fri>

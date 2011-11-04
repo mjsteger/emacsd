@@ -1,0 +1,57 @@
+import os
+
+os.path
+
+class sasd(object):
+    """
+    This is junk
+    """
+
+    def __init__(self, badValue):
+        """
+
+        Arguments:
+        - `badValue`:
+        """
+        self._badValue = badValue
+
+
+
+
+def permute(string):
+    if len(string) == 0:
+        return ""
+    returnList = []
+    first = string[0]
+    rest = string[1:]
+    remainderList = permute(rest)
+    for word in remainderList:
+        for position in range(len(word) +1):
+            returnList.append(word[0:position] + first + word[position:])
+    return returnList
+
+
+def blah(blah):
+    """
+
+    Arguments:
+    - `blah`:
+    """
+class a(s):
+    """
+    s
+    """
+    
+    def __init__(self, s):
+        """s
+        
+        Arguments:
+        - `s`:
+        """
+        self._s = s
+        
+
+
+print "hello"
+
+print "hello"

@@ -1,0 +1,65 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdftex 2011.7.3)  31 AUG 2011 12:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**/Users/michaelsteger/testin
+(/Users/michaelsteger/testin
+! Undefined control sequence.
+l.2 \documentstyle
+                  [11pt]{article}
+? 
+! Undefined control sequence.
+l.4 \setlength
+              {\topmargin}{-.5in}
+? 
+! Undefined control sequence.
+l.4 \setlength{\topmargin
+                         }{-.5in}
+? 
+! Undefined control sequence.
+l.5 \setlength
+              {\textheight}{9in}
+? 
+! Undefined control sequence.
+l.5 \setlength{\textheight
+                          }{9in}
+? 
+! Undefined control sequence.
+l.6 \setlength
+              {\oddsidemargin}{.125in}
+? 
+! Undefined control sequence.
+l.6 \setlength{\oddsidemargin
+                             }{.125in}
+? 
+! Undefined control sequence.
+l.7 \setlength
+              {\textwidth}{6.25in}
+? 
+! Undefined control sequence.
+l.7 \setlength{\textwidth
+                         }{6.25in}
+? 
+! Undefined control sequence.
+l.8 \begin
+          {document}
+? 
+! Undefined control sequence.
+l.9 \title
+          {LaTeX Typesetting By Example}
+? 
+)
+*
+(Please type a command or say `\end')
+*
+(Please type a command or say `\end')
+*\end
+[1{/usr/local/texlive/2011/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]</usr/
+local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on testin.pdf (1 page, 16365 bytes).
+PDF statistics:
+ 12 PDF objects out of 1000 (max. 8388607)
+ 7 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

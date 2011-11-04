@@ -1,0 +1,21 @@
+import pyglet
+import graphics
+import control
+
+pyglet.gl.glClearColor = (1,1,1,1)
+window = graphics.window
+caret = graphics.caret
+
+lines = []
+
+@window.event
+def on_text(text):
+    if window.focus:
+        window.focus.caret.on_text(text)
+
+@caret.event
+def on_text(text):
+    print "Caret is doing stuff?" , text
+
+
+graphics.runWindow()

@@ -1,2 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/vendors/")
 (load-file "~/.emacs.d/vendors/smart-scan.el")
 ;;(load-file "~/.emacs.d/vendors/lisppaste.el")
+(require 'coffee-script-config)
+(require 'coding-utils)
+(require 'projectile)

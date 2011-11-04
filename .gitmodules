@@ -1,0 +1,9 @@
+[submodule "elisp/external/gist.el"]
+	path = elisp/external/gist.el
+	url = https://github.com/mhayashi1120/gist.el.git
+[submodule "perspective"]
+	path = perspective
+	url = https://github.com/nex3/perspective-el.git
+[submodule "emacs-test-unit"]
+	path = emacs-test-unit
+	url = https://github.com/rocky/emacs-test-unit.git

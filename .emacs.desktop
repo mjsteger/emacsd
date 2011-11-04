@@ -1,0 +1,359 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Sep 13 21:43:42 2011
+;; Desktop file format version 206
+;; Emacs version 23.2.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("/Users/michaelsteger/.emacs.d/tweaks/load-tweaks.el" "~/.emacs.d/tweaks/load-tweaks.el" "~/personal/testing.py" "~/personal/a" "~/cs188/tutorial/tutorial.html" "~/cs188/tutorial/shop.py" "~/cs188/tutorial/buyLotsOfFruit.py" "~/.emacs.d/languages/haskell/load-haskell.el" "~/.emacs.d/load-all.el" "~/.timelog" "~/test.hs" "~/classes/881sc/notes.org" "~/test.org" "~/org/school.org" "~/cs188/tutorial/shopSmart.py" "~/classes/491sc/notes.org" "~/.emacs.bmk" "~/org/diary.org" "~/org/intern.twilio.org" "~/org/work.org" "~/org/google.org" "~/org/gtd.org" "~/org/test.org" "~/org/home.org" "~/org/devOpsTwilio.org" "~/.emacs.d/tweaks/emacs-color-theme-solarized/README.md" "~/twilio/thingsToTakeCareOf.org" "~/presentation/web.logging.yaml" "~/presentation/flume-collector.logging.yaml" "~/presentation/script.org"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.emacs.d/tweaks/load-tweaks.el"
+  "load-tweaks.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  7354
+  '(2846 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/diary"
+  "diary"
+  'diary-mode
+  '(yas/minor-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/bin/csc"
+  "csc"
+  'sh-mode
+  '(auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  223
+  '(76 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.zshrc"
+  ".zshrc"
+  'sh-mode
+  '(auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  6948
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/classes/124h/notes.org"
+  "notes.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  6354
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/search/searchAgents.py"
+  "searchAgents.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  20896
+  '(20750 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/bin/getTodos"
+  "getTodos"
+  'sh-mode
+  '(auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  235
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/misc-config.el"
+  "misc-config.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  11214
+  '(11193 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/p1-search/search.py"
+  "search.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  5127
+  '(4702 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.emacs.d/vendors/load-vendors.el"
+  "load-vendors.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  22
+  '(199 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/coffee-script-config.el"
+  "coffee-script-config.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  94
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/bindings-config.el"
+  "bindings-config.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  192
+  '(4076 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/navigation-utils.el"
+  "navigation-utils.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/python-config.el"
+  "python-config.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  96
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/coding-utils.el"
+  "coding-utils.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  5530
+  '(2608 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/emacs-dev-kit/coding-config.el"
+  "coding-config.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  209
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/school.org"
+  "school.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  20
+  '(1113 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/classes/b1r/summary.txt"
+  "summary.txt"
+  'text-mode
+  '(yas/minor-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  9
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.emacs.d/org-mode/load-org.el"
+  "load-org.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  16173
+  '(3748 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode . t) (buffer-file-coding-system . undecided-unix) (fill-column . 70)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/personal/helpsessions/emacs"
+  "emacs"
+  'fundamental-mode
+  '(undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  1
+  '(4673 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/devOpsTwilio.org"
+  "devOpsTwilio.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/home.org"
+  "home.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  18
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/test.org"
+  "test.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/gtd.org"
+  "gtd.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  256
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/google.org"
+  "google.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/work.org"
+  "work.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/org/intern.twilio.org"
+  "intern.twilio.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  2196
+  '(38 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.emacs-bmk-bmenu-state.el"
+  ".emacs-bmk-bmenu-state.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  1
+  '(2794 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/search/search.py"
+  "search.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  5805
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/test.py"
+  "test.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  20
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+

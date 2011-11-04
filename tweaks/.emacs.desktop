@@ -1,0 +1,106 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sun Oct 30 11:42:35 2011
+;; Desktop file format version 206
+;; Emacs version 23.2.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("," "rf" "f" "qrr" "mode" "yasnippet" "snippet" "region" "M-p" "\n" "s" "times" ")" "drawAnswer" "and" "="))
+(setq regexp-search-ring '("(provide 'auto-complete-yasnippet)" "\n(provide 'auto-complete-yasnippet)" "sea."))
+(setq register-alist nil)
+(setq file-name-history '("/Users/michaelsteger/play/editor/graphics.py" "/Users/michaelsteger/play/editor/control.py" "/Users/michaelsteger/play/testing.py" "/Users/michaelsteger/national/notes.org" "/Users/michaelsteger/play/test.py" "/Users/michaelsteger/play/eightqueen.py" "/Users/michaelsteger/play/allSubsets.py" "/Users/michaelsteger/play/dumbBot.py" "/Users/michaelsteger/play/eightqueen.py" "/Users/michaelsteger/play/eightqueen.pu" "/Users/michaelsteger/play/editor/graphics.py" "/Users/michaelsteger/play/editor/control.py" "/Users/michaelsteger/play/editor/buffers.py" "/Users/michaelsteger/play/editor/control.py" "/Users/michaelsteger/play/editor/graphics.py" "/Users/michaelsteger/play/editor/buffers.py" "/Users/michaelsteger/play/goodBot/overview.org" "/Users/michaelsteger/play/goodBot/overview.txt" "/Users/michaelsteger/classes/881sc/testPrep.org" "/Users/michaelsteger/classes/881sc/testStuff.org" "/Users/michaelsteger/national/thingsToDo.org" "/Users/michaelsteger/0ad/source/simulation2/components/CCmpPathfinder_Common.h" "/Users/michaelsteger/0ad/source/simulation2/components/CCmpPathfinder.cpp" "/Users/michaelsteger/national/restaurants.org" "/Users/michaelsteger/national/tickler.org" "/Users/michaelsteger/national/phrases.org" "/Users/michaelsteger/national/debts.org" "/Users/michaelsteger/national/companies.org" "/Users/michaelsteger/national/wishList.org" "/Users/michaelsteger/book.hs"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/allSubsets.py"
+  "allSubsets.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  104
+  '(257 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (fill-column . 80)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/.emacs.d/tweaks/load-tweaks.el"
+  "load-tweaks.el"
+  'emacs-lisp-mode
+  '(yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  1
+  '(18191 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/editor/graphics.py"
+  "graphics.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  47
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/editor/control.py"
+  "control.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  216
+  '(253 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/dumbBot.py"
+  "dumbBot.py"
+  'python-mode
+  '(flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  456
+  '(620 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/play/eightqueen.py"
+  "eightqueen.py"
+  'python-mode
+  '(iedit-mode flymake-mode yas/minor-mode auto-complete-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode hi-lock-mode)
+  615
+  '(857 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/national/notes.org"
+  "notes.org"
+  'org-mode
+  '(auto-fill-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode org-indent-mode)
+  998
+  '(1 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/michaelsteger/diary"
+  "diary"
+  'diary-mode
+  '(yas/minor-mode undo-tree-mode linum-mode rainbow-delimiters-mode global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+

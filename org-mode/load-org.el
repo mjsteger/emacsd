@@ -343,14 +343,6 @@ This does not support projects with subprojects"
               ("STARTED" ("WAITING"))
               ("DONE" ("WAITING") ("CANCELLED")))))
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            ;; yasnippet
-            (make-variable-buffer-local 'yas/trigger-key)
-            (org-set-local 'yas/trigger-key [tab])
-            (define-key yas/keymap [tab] 'yas/next-field-group)
-	    ;; auto-fill mode on
-            (auto-fill-mode 1)))
 
 
 ;; Show all future entries for repeating tasks
